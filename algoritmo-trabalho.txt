@@ -1,0 +1,81 @@
+//Script de rotina antes de trabalhar
+
+var $fabio; //Eu
+var $despetador; //Mecanismo para acordar $fabio
+var $trabalho; //Trabalho de $fabio
+var $todolist; //Lista de afazeres
+var $tudopronto; //Verificação do $todolist
+
+//Setando os valores iniciais
+$fabio = 0; //0 para dormir e 1 para acordado
+$despetador = 0; //0 para alarme desligado e 1 para alarme ligado
+$trabalho = 0; //0 para ainda não trabalhando e 1 para iniciou o trabalho
+$tudopronto = 0; //0 para atividades incompletas 1 para começar a trabalhar
+
+//array com as funções para serem completadas antes de trabalhar
+$todolist = vetor(
+	0 => "0", 
+	1 => "0",
+	2 => "0",
+	3 => "0",
+	4 => "0",
+);
+
+//Verifica de já deu hora de acordar
+enquanto ($despertador == 0){
+	se(hora() == "7:20"){
+		$despertador = 1;
+		echo "ALARME!";
+		$fabio = 1;
+	}
+}
+
+//Despertador tocando e $fabio foi acordado
+se($fabio == 1){
+	$despertador = 0;
+
+}
+
+//Looping das atividades a serem realizadas antes de trabalhar
+enquanto($trabalho != 1){
+	se($todolist[0] == 0){ //atividades realizadas no banheiro
+		banheiro("fazerxixi");
+		banheiro("escovardentes");
+		banheiro("lavarrosto");
+		banheiro("arrumarcabelo");
+		$todolist[0] = 1;
+		$tudopronto = $tudopronto + 1;
+	}
+
+	se($todolist[1] == 0){ //atividades realizadas no quarto
+		quarto("tomarremedio");
+		quarto("trocar de roupa");
+		$todolist[1] = 1;
+		$tudopronto = $tudopronto + 1;
+	}
+
+	se($todolist[2] == 0){ //atividades realizadas na garagem
+		garagem("levarfilhoescola");
+		garagem("voltarcasa");
+		$todolist[2] = 1;
+		$tudopronto = $tudopronto + 1;
+	}
+	
+	se($todolist[3] == 0){ //atividades realizadas na cozinha
+		cozinha("tomarcafe");
+		cozinha("lavarlouca");
+		$todolist[3] = 1;
+		$tudopronto = $tudopronto + 1;
+	}
+
+	se($todolist[4] == 0){ //atividades realizadas no escritório
+		escritorio("ligarcomputador");
+		escritorio("loginlivepass");
+		$todolist[4] = 1;
+		$tudopronto = $tudopronto + 1;
+	}
+
+	se($tudopronto == 5){$trabalho = 1;}
+}
+
+echo "Bom dia desenvolvedores!";
